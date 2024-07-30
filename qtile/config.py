@@ -30,8 +30,12 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
 browser = "mercury-browser"
+fm = "kitty -e yazi"
+tm = "kitty -e htop"
+
+kb = "/home/ale/.config/qtile/keyboard.bash"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -81,6 +85,15 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn rofi"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "m", lazy.spawn(fm), desc="Spawn file-manager"),
+    Key([mod], "escape", lazy.spawn(tm), desc="Spawn task-manager"),
+    Key(["mod1"], "l", lazy.spawn(kb), desc="Switch keyboard layout"),
+
+    # Doesn't seem to work in the vm idk on real hardware
+
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86LowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
+    Key([], "XF86RaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -124,7 +137,14 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"],
+                   border_focus='#ffffff',
+                   border_normal='#000000',
+                   border_width=2,
+                   margin=10,
+                   margin_on_single=30,
+                   border_on_single=True
+                   ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -161,12 +181,11 @@ screens = [
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                ), 
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
+                widget.Volume(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
