@@ -27,6 +27,14 @@ paru
 
 ---
 
+[services]
+
+ufw
+
+ly
+
+---
+
 [ly]
 /etc/ly/config.ini
 clock = %a %b %D
