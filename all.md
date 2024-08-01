@@ -3,6 +3,7 @@ tldr
 fish
 vim
 htop
+p7zip
 
 [dependencies]
 xorg-xinit

@@ -1,7 +1,0 @@
-[shell]
-program = "/bin/fish"
-args = ["-l"]
-
-[window]
-opacity = 0.5
-blur = true
