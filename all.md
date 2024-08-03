@@ -45,7 +45,7 @@ bigclock = true
 /etc/pacman.conf
 Color
 VerbosePkgLists
-ParallelDownloads=5
+ParallelDownloads = 5
 ILoveCandy
 
 [gufw]

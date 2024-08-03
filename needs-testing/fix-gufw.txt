@@ -1,0 +1,8 @@
+#!/bin/bash
+
+file="/usr/bin/gufw"
+
+old_text="pkexec gufw-pkexec $c_user"
+new_text="pkexec /usr/bin/gufw-pkexec $c_user"
+
+sed -i "s/$old_text/$new_text/" "$file"
