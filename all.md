@@ -1,7 +1,7 @@
 [tools]
 tldr
 fish
-vim
+gvim
 htop
 p7zip
 
