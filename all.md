@@ -23,6 +23,8 @@ picom
 gufw
 git
 
+exfat-utils
+
 [aur]
 paru
 
