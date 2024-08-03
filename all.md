@@ -1,6 +1,7 @@
 [tools]
 tldr
 fish
+# gvim instead of vim to get "+y and "+p
 gvim
 htop
 p7zip
