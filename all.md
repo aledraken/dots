@@ -1,63 +1,14 @@
-[tools]
-tldr
-fish
-# gvim instead of vim to get "+y and "+p
-gvim
-htop
-p7zip
-fuse2
+[gaming]
 
-[dependencies]
-xorg-xinit
-xorg-server
+Need to create another script to install gaming stuff
 
-[environment]
-ly
-qtile
-kitty
-yazi
-rofi
-alsa-utils
-
-picom
-
-[others]
-gufw
-git
-
-exfat-utils
-
-[aur]
-paru
+steam
 
 ---
 
-[services]
-
-ufw
-
-ly
-
----
-
-[ly]
-/etc/ly/config.ini
-clock = %a %b %D
-bigclock = true
-
-[pacman]
-/etc/pacman.conf
-Color
-VerbosePkgLists
-ParallelDownloads = 5
-ILoveCandy
-
-[gufw]
-/usr/bin/gufw
-pkexec /usr/bin/gufw-pkexec ...
+Not really useful but might add a script to do this
 
 [fish]
-set -U fish_greeting ""
 
 vim .config/fish/config.fish
 if ...
@@ -66,14 +17,10 @@ end
 
 ---
 
-[notes]
+[to-do]
 
 Might be better to have instead of alt + l to change keyboard layout, to remap the caps lock to nothing and bind the shortcut to just that,
 and then I could remap num block to if pressed num lock, held caps lock
-
-[to-do]
-
-Moving the mouse with the caps lock and numpad in linux?
 
 Bluetooth
 
