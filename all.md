@@ -1,5 +1,7 @@
 [gaming]
 
+Linux push test
+
 Need to create another script to install gaming stuff
 
 steam
