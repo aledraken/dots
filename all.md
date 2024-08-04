@@ -19,6 +19,8 @@ end
 
 [to-do]
 
+Media control in center of bar (should be easy)
+
 Might be better to have instead of alt + l to change keyboard layout, to remap the caps lock to nothing and bind the shortcut to just that,
 and then I could remap num block to if pressed num lock, held caps lock
 
