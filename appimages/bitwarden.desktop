@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Bitwarden
+Comment=Password manager
+Exec=/home/ale/AppImages/Bitwarden.AppImage
+Terminal=false
+Categories=Tools

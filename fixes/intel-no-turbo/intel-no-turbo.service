@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable intel cpu turbo
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/etc/systemd/system/intel-no-turbo.sh
+
+[Install]
+WantedBy=multi-user.target
