@@ -5,6 +5,7 @@ fish
 gvim
 htop
 p7zip
+fuse2
 
 [dependencies]
 xorg-xinit
