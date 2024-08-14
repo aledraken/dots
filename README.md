@@ -6,6 +6,32 @@ Need to create another script to install gaming stuff
 
 steam lutris
 
+Lutris drivers and dependencies:
+
+https://github.com/lutris/docs/blob/master/Performance-Tweaks.md
+
+https://github.com/lutris/docs/blob/master/InstallingDrivers.md
+
+https://github.com/lutris/docs/blob/master/WineDependencies.md
+
+[work?]
+
+krita
+
+godot
+
+[tools]
+
+feh
+
+mpv
+
+xdotool
+
+networkmanager
+
+nm-connection-editor
+
 ---
 
 Not really useful but might add a script to do this
@@ -20,6 +46,8 @@ end
 ---
 
 [to-do]
+
+Enable/disable touch of wacom tablet with shortcut in qtile config
 
 Media control in center of bar (should be easy)
 

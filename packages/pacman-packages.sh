@@ -1,3 +1,13 @@
 #!/bin/bash
 
-sudo pacman -S tldr fish gvim htop xorg-xinit xorg-server ly qtile kitty yazi rofi alsa-utils gufw git p7zip exfat-utils fuse2
+echo "installing basic stuff"
+
+sudo pacman -S fish xorg-xinit xorg-server ly qtile kitty alsa-utils gufw exfat-utils fuse2
+
+echo "installing utilities"
+
+sudo pacman -S p7zip git qbittorrent tldr htop gvim yazi rofi
+
+echo "installing looks"
+
+sudo pacman -S noto-fonts-emoji
