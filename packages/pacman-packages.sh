@@ -2,7 +2,7 @@
 
 echo "installing basic stuff"
 
-sudo pacman -S fish xorg-xinit xorg-server ly qtile kitty alsa-utils gufw exfat-utils fuse2
+sudo pacman -S fish xorg-xinit xorg-server ly qtile kitty alsa-utils gufw exfatprogs fuse2
 
 echo "installing utilities"
 

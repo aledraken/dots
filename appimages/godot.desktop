@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Godot Engine
+Exec=/home/ale/AppImages/Godot.x86_64
+Terminal=false
+Categories=Games

@@ -22,13 +22,13 @@ godot
 
 [tools]
 
+thunderbird
+
 feh
 
 mpv
 
 xdotool
-
-networkmanager
 
 nm-connection-editor
 
