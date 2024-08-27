@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=LibreSprite
+Comment=Pixel Art Editor
+Exec=/home/ale/AppImages/LibreSprite.AppImage
+Terminal=false
+Categories=Tools

@@ -32,6 +32,48 @@ xdotool
 
 nm-connection-editor
 
+parted
+
+libreoffice-fresh
+
+xf86-input-wacom
+
+gamemode
+
+gamescope
+
+mangohud
+
+noto-fonts-cjk
+
+[aur]
+
+p7zip-gui
+
+powerkit
+
+android-studio
+
+---
+
+dnsmasq package needed maybe if it doesn't work
+https://wiki.archlinux.org/title/NetworkManager#DNS_management
+
+linux-wifi-hotspot
+
+if ufw blocks connection
+
+sudo ufw allow in on wlp3s0
+
+sudo ufw route allow out on enp2s0
+
+sudo ufw status numbered
+
+[ 1] Anywhere on wlp3s0         ALLOW IN    Anywhere                  
+[ 2] Anywhere on enp2s0         ALLOW FWD   Anywhere                   (out)
+[ 3] Anywhere (v6) on wlp3s0    ALLOW IN    Anywhere (v6)             
+[ 4] Anywhere (v6) on enp2s0    ALLOW FWD   Anywhere (v6)              (out)
+
 ---
 
 Not really useful but might add a script to do this

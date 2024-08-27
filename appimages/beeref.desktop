@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=BeeRef
+Comment=A Simple Reference Image Viewer
+Exec=/home/ale/AppImages/BeeRef.appimage
+Terminal=false
+Categories=Tools
