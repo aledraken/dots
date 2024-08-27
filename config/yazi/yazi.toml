@@ -1,0 +1,16 @@
+#[manager]
+#show_hidden = true
+
+[opener]
+edit = [
+	{ run = 'vim "$@"', block = true},
+]
+
+feh = [
+	{ run = 'feh "$@"' },
+]
+
+[open]
+prepend_rules = [
+	{ name = "*.png", use = "feh" },
+]
