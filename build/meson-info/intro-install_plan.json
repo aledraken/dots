@@ -1,0 +1,10 @@
+{
+  "targets": {
+    "/home/ale/Packages/glshell/build/glshell": {
+      "destination": "{bindir}/glshell",
+      "tag": "runtime",
+      "subproject": null,
+      "install_rpath": null
+    }
+  }
+}

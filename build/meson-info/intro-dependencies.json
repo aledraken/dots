@@ -1,0 +1,137 @@
+[
+  {
+    "name": "wayland-client",
+    "type": "pkgconfig",
+    "version": "1.23.1",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libwayland-client.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": [
+      "wayland_client"
+    ]
+  },
+  {
+    "name": "wayland-egl",
+    "type": "pkgconfig",
+    "version": "18.1.0",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libwayland-egl.so",
+      "/usr/lib/libwayland-client.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": [
+      "wayland_egl"
+    ]
+  },
+  {
+    "name": "wayland-protocols",
+    "type": "pkgconfig",
+    "version": "1.41",
+    "compile_args": [],
+    "link_args": [],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": [
+      "wayland_protocols"
+    ]
+  },
+  {
+    "name": "gl",
+    "type": "pkgconfig",
+    "version": "1.2",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libGL.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": []
+  },
+  {
+    "name": "egl",
+    "type": "pkgconfig",
+    "version": "1.5",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libEGL.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": []
+  },
+  {
+    "name": "glu",
+    "type": "pkgconfig",
+    "version": "9.0.3",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libGLU.so",
+      "/usr/lib/libOpenGL.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": []
+  },
+  {
+    "name": "glew",
+    "type": "pkgconfig",
+    "version": "2.2.0",
+    "compile_args": [],
+    "link_args": [
+      "/usr/lib/libGLEW.so",
+      "/usr/lib/libEGL.so",
+      "/usr/lib/libGL.so",
+      "/usr/lib/libGLU.so",
+      "/usr/lib/libOpenGL.so"
+    ],
+    "include_directories": [],
+    "sources": [],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [],
+    "meson_variables": []
+  },
+  {
+    "name": "dep118186645879256680090037984781061475035",
+    "type": "internal",
+    "version": "0.1.0",
+    "compile_args": [],
+    "link_args": [],
+    "include_directories": [],
+    "sources": [
+      "xdg-shell-client-protocol.h",
+      "wlr-layer-shell-unstable-v1-client-protocol.h"
+    ],
+    "extra_files": [],
+    "dependencies": [],
+    "depends": [
+      "8998617@@client_protos@sta"
+    ],
+    "meson_variables": [
+      "client_protos"
+    ]
+  }
+]
