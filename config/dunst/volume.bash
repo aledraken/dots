@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/usr/bin/env bash
 
 current_percentage=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}' | awk '{print $1 * 100}')
 
