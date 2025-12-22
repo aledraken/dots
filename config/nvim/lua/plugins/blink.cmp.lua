@@ -29,11 +29,12 @@ return {
 	preset = 'none', -- set to 'none' to disable the 'default' preset
 	['<Down>'] = false,
 	['<Up>'] = false,
-	['<C-e>'] = false,
-	['<C-h>'] = {'hide'},
-	['<C-Up>'] = { 'select_prev'},
-	['<C-Down>'] = { 'select_next'},
-	['<C-y>'] = { 'accept'},
+	['<C-Up>'] = {'select_prev'},
+	['<C-Down>'] = {'select_next'},
+	['<C-y>'] = {'accept'},
+	['<C-Return>'] = {'accept'},
+	['<C-s>'] = {'show'},
+	['<C-e>'] = {'hide'},
 	},
 
     appearance = {

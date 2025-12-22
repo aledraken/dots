@@ -7,34 +7,36 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "niri/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        "niri/window"
+        "hyprland/window"
     ],
     "modules-right": [
-        "niri/language",
+        "keyboard-state",
+        "hyprland/language",
         "idle_inhibitor",
         "wireplumber",
         "clock",
         "tray",
+        "battery",
         "custom/power"
     ],
 
-    "niri/workspaces": {
-	"format": "{value}"
-    },
-    "niri/language": {
+    "hyprland/language": {
 	"format": "{short}"
     },
-    "niri/window": {
+    "hyprland/window": {
 	"tooltip": false,
         //"icon": true
     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": {
+          "numlock": "N {icon}",
+          "capslock": "C {icon}",
+        },
         "format-icons": {
             "locked": "",
             "unlocked": ""
@@ -56,6 +58,13 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
+    "battery": {
+        "states": {
+              "half": 50,
+              "low": 30,
+              "critical": 10
+        }
+    },
     "clock": {
 	"padding": 0,
         // "timezone": "America/New_York",
@@ -65,26 +74,18 @@
     "wireplumber": {
 	"tooltip": false,
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "{volume}% muted",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
     },
     "custom/power": {
         "format" : "⏻ ",
-		"tooltip": false,
-		"on-click": "$HOME/.config/rofi/power-menu.bash"
+	    "tooltip": false,
+	"on-click": "$HOME/.config/rofi/power-menu.bash"
     }
 }

@@ -1,0 +1,28 @@
+#!/run/current-system/sw/bin/bash
+
+rofi=$"/run/current-system/sw/bin/rofi"
+hyprctl=$"/run/current-system/sw/bin/hyprctl"
+
+echo $rofi
+
+action=$(echo "Log Out|Shut Down|Reboot" | $rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
+
+if [[ "$action" == "" ]]; then
+	exit
+fi
+
+confirm=$(echo "Confirm|Cancel" | $rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
+
+if [[ "$confirm" == "Confirm" ]]; then
+	echo $action
+else
+        exit
+fi
+
+if [[ "$action" == "Log Out" ]]; then
+	$hyprctl dispatch exit
+elif [[ "$action" == "Shut Down" ]]; then
+	shutdown -f now
+elif [[ "$action" == "Reboot" ]]; then
+	reboot
+fi

@@ -1,19 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-action=$(echo "Log Out|Shut Down|Reboot" | rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
+action=$(echo "Log Out|Shut Down|Reboot" | uwsm-app -- rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 if [[ "$action" == "" ]]; then
 	exit
 fi
 
-confirm=$(echo "Confirm|Cancel" | rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
+confirm=$(echo "Confirm|Cancel" | uwsm-app -- rofi -sep "|" -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary)
 
 if [[ "$confirm" == "Confirm" ]]; then
 	echo $action
+else
+        exit
 fi
 
 if [[ "$action" == "Log Out" ]]; then
-	niri msg action quit --skip-confirmation
+	uwsm stop
 elif [[ "$action" == "Shut Down" ]]; then
 	shutdown -f now
 elif [[ "$action" == "Reboot" ]]; then

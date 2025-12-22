@@ -35,7 +35,7 @@ button:hover {
 }
 
 #workspaces {
-    background-color: transparent;
+    background-color: @background;
 }
 
 #workspaces button label {
@@ -49,29 +49,11 @@ button:hover {
     border: 2px solid @outline;
 }
 
-/*#workspaces button.focused:first-child {
-
-#workspaces button.focused:nth-child(2) {
-*/
-
-#workspaces button:last-child {
-}
-
 #workspaces button:hover {
     background: @primary_container;
 }
 
-#workspaces button.empty {
-    margin-right: -45;
-    opacity: 0;
-}
-
-#workspaces button.focused.empty {
-    margin-right: 0;
-    opacity: 100;
-}
-
-#workspaces button.focused {
+#workspaces button.active {
     border: 2px solid @primary;
     background-color: @primary_container;
     color: @secondary;
@@ -92,16 +74,35 @@ button:hover {
 }*/
 
 #language {
-    background-color: @primary_container;
+    background-color: @background;
     padding: 0 5px;
     border: 2px solid @primary;
 }
 
 #clock {
+    background-color: @background;
+    padding: 0 5px;
+    padding-right: 7px;
+    border: 2px solid @primary;
+}
+
+#battery {
     background-color: @tertiary_container;
     padding: 0 5px;
     padding-right: 7px;
     border: 2px solid @primary;
+}
+
+#battery.half {
+    background-color: @secondary_container
+}
+
+#battery.low {
+    background-color: @primary_container
+}
+
+#battery.critical {
+    background-color: @on_error
 }
 
 @keyframes blink {
@@ -117,17 +118,20 @@ label:focus {
 
 #wireplumber {
     padding: 0 4px;
-    background-color: @secondary_container;
+    background-color: @background;
     border: 2px solid @primary;
+    padding-right: 10px;
 }
 
 #wireplumber.muted {
-    background-color: @error;
+    border: 2px solid @outline;
+    padding-right: 5px;
 }
 
 /* you can set a style on hover for any module like this */
 #wireplumber:hover {
-    background-color: #a37800;
+    background-color: @primary;
+    color: @on_primary;
 }
 
 #tray {
@@ -143,16 +147,30 @@ label:focus {
     background-color: @error_container;
 }
 
+#keyboard-state label {
+    background-color: @background;
+    border: 2px solid @primary;
+    padding: 0 5px;
+    color: @primary_container;
+    margin-left: 5px;
+}
+
+#keyboard-state label.locked {
+    background-color: @primary;
+    color: @on_primary;
+    border: 2px solid @outline
+}
+
 #idle_inhibitor {
     background-color: @background;
     padding: 0 5px;
+    padding-right: 12px;
     color: @on_background;
     border: 2px solid @primary;
 }
 
 #idle_inhibitor.activated {
     background-color: @secondary_container;
-    padding: 0 5px;
     color: @secondary;
     border: 2px solid @secondary;
 }
@@ -162,5 +180,5 @@ label:focus {
     border: 2px solid @error_container;
     color: @on_surface;
     padding: 0 7px;
-    padding-right: 0px;
+    padding-right: 3px;
 }

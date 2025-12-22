@@ -1,3 +1,3 @@
-function lsblc --wraps='lsblk | bat -l conf' --description 'alias lsblc lsblk | bat -l conf'
+function lsblc --wraps='lsblk | bat -l conf' --description 'cooler lsblk'
     lsblk | bat -l conf $argv
 end

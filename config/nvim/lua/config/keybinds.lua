@@ -3,3 +3,4 @@
 -- Add any additional keymaps here
 vim.g.mapleader = " " -- leader key (space) used for other keybinds
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex) -- leader key + cd to explore files
+
