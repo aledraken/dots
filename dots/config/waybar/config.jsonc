@@ -1,0 +1,92 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "keyboard-state",
+        "hyprland/language",
+        "idle_inhibitor",
+        "wireplumber",
+        "clock",
+        "tray",
+        "battery",
+        "custom/power"
+    ],
+
+    "hyprland/language": {
+	"format": "{short}"
+    },
+    "hyprland/window": {
+	"tooltip": false,
+        //"icon": true
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": {
+          "numlock": "N {icon}",
+          "capslock": "C {icon}",
+        },
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "idle_inhibitor": {
+	"tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "battery": {
+        "states": {
+              "half": 50,
+              "low": 30,
+              "critical": 10
+        },
+        "on-click": "uwsm-app auto-cpufreq-gtk"
+    },
+    "clock": {
+	"padding": 0,
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "wireplumber": {
+	"tooltip": false,
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "{volume}% muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "uwsm-app pwvucontrol"
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+	    "tooltip": false,
+	"on-click": "$HOME/.config/rofi/power-menu.bash"
+    }
+}
