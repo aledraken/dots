@@ -9,6 +9,6 @@ pmi=$"sudo pacman -S --needed --noconfirm"
 yi=$"yay -S --needed --noconfirm"
 es=$"sudo systemctl enable --now"
 
-echo -e "\nInstalling power management software\n"
+echo -e "\nInstalling laptop software\n"
 
 $pmi brightnessctl impala

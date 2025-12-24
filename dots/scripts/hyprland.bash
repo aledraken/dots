@@ -16,7 +16,7 @@ $pmi hyprland hyprpolkitagent xdg-desktop-portal-hyprland hyprlock hypridle
 
 echo -e "\nSymlinking .bashrc (boot menu)\n"
 mv $HOME/.bashrc $HOME/.bashrc.old
-ln $HOME/.config/symlinks/home/.bashrc $HOME/.bashrc
+ln --force $HOME/.config/symlinks/home/.bashrc $HOME/.bashrc
 
 
 echo -e "\nInstalling Fonts\n"
@@ -28,7 +28,7 @@ $pmi foot fish starship neovim 7zip htop yazi bat eza tldr wl-clipboard trash-cl
 
 
 echo -e "\nInstalling gui stuff\n"
-$pmi waybar rofi dunst libnotify
+$pmi waybar rofi dunst libnotify thunar
 
 
 echo -e "\nInstalling theming stuff\n"

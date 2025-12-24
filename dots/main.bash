@@ -29,7 +29,9 @@ pmi=$"sudo pacman -S --needed --noconfirm"
 ###########
 
 echo -e "\nWelcome to the arch post-install script!\n"
-echo "Let's start by enabling the other bash scripts!"
+echo -e "Let's start by enabling the other bash scripts!\n"
+echo -e "${RED}Make sure to be running the script from the folder where main.bash is stored!${NC}"
+echo -e "${YELLOW}Currently running from $PWD${NC}\n"
 read -p "Continue? (Y/n) " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -62,6 +64,17 @@ read -p "Install yay? (Y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   ./scripts/install-yay.bash
+fi
+
+###################
+# AppImage helper #
+###################
+
+echo
+read -p "Install AM (AppImage helper)? (Y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  ./scripts/install-am.bash
 fi
 
 ##########
@@ -133,6 +146,13 @@ fi
 ###########
 # DRIVERS #
 ###########
+
+# exfatprogs
+
+
+#########
+# FIXES #
+#########
 
 
 

@@ -8,7 +8,9 @@ NC='\033[0m'
 pmi=$"sudo pacman -S --needed --noconfirm"
 yi=$"yay -S --needed --noconfirm"
 
-$pmi qbittorrent
+$pmi qbittorrent flatpak
+$yi librewolf-bin
+
 flatpak install org.localsend.localsend_app com.github.tchx84.Flatseal
 
 echo -e "\nSymlinking LocalSend firewall rule\n"

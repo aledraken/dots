@@ -82,7 +82,7 @@
         "format-icons": {
             "default": ["", "", ""]
         },
-        "on-click": "uwsm-app pwvucontrol"
+        "on-click": "uwsm-app pavucontrol"
     },
     "custom/power": {
         "format" : "⏻ ",
