@@ -45,50 +45,11 @@ if [[ ! $REPLY =~ ^(""|[yY])$ ]]; then
 	echo "Device is now $DEVICE"
 fi
 
-# Get root password
-
-ROOTPASSWDSET=false
-
-while [ $ROOTPASSWDSET == false ]
-do
-	read -p "Root password: " ROOTPASSWD
-	read -p "Retype root password: " ROOTPASSWD2
-	if [ "$ROOTPASSWD" != "$ROOTPASSWD2" ]; then
-		echo "Root password mismatch"
-	else
-		echo "Root password set to: $ROOTPASSWD"
-		ROOTPASSWDSET=true
-	fi
-done
-
-# User account
-
-USERPASSWDSET=false
-read -p "Create user account? (Y/n) " -n 1 -r
-echo
-if [[ $REPLY =~ ^(""|[yY])$ ]]; then
-	read -p "Username: " USERNAME
-	while [ $USERPASSWDSET == false ]
-	do
-		read -p "User password: " USERPASSWD
-		read -p "Retype user password: " USERPASSWD2
-		if [ "$USERPASSWD" != "$USERPASSWD2" ]; then
-			echo "User password mismatch"
-		else
-			echo "User password set to: $USERPASSWD"
-			USERPASSWDSET=true
-		fi
-	done
-fi
-
 # Ensure everything is correct before installing
 
 echo -e "\nTODO\n"
 echo "Partition disk /dev/$DISK"
 echo "Device type $DEVICE"
-echo "Root password: $ROOTPASSWD"
-echo "Username: $USERNAME"
-echo "User password: $USERPASSWD"
 echo
 
 read -p "Is everything correct, continue installation? (y/N) " -n 1 -r
@@ -135,10 +96,6 @@ if [ $DEVICE == "laptop" ]; then
 	PACKAGES="${PACKAGES} iwd"
 fi
 
-if [ $USERPASSWD ]; then
-	PACKAGES="${PACKAGES} sudo"
-fi
-
 pacstrap -K /mnt $PACKAGES
 
 # CHROOT
@@ -155,7 +112,7 @@ fi
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # TIME & ZONE
-ln -sf /mnt/usr/share/zoneinfo/Europe/Rome /mnt/etc/localtime
+$CHROOT ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 $CHROOT hwclock --systohc
 
 # Locales
@@ -166,19 +123,6 @@ $CHROOT locale-gen
 # HOSTNAME
 echo "a-linux-$DEVICE" > /mnt/etc/hostname
 
-# USERS
-
-$CHROOT echo "$ROOTPASSWD" | passwd --stdin
-
-if [ $USERPASSWD ]; then
-	mkdir -p /mnt/etc/sudoers.d
-	echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/99_wheel
-	$CHROOT useradd -m $USERNAME
-	$CHROOT usermod -aG wheel $USERNAME
-	$CHROOT echo "$USERPASSWD" | passwd $USERNAME --stdin
-	echo "User $USERNAME created"
-fi
-
 # Pacman
 sed -i '/#Color/c\Color\nILoveCandy' /etc/pacman.conf
 sed -i '/#VerbosePkgLists/s/^#//g' /etc/pacman.conf
@@ -187,4 +131,28 @@ sed -i '/#VerbosePkgLists/s/^#//g' /etc/pacman.conf
 $CHROOT bootctl install
 echo -e "default @saved\ntimeout 3\nconsole-mode max" > /mnt/boot/loader/loader.conf
 PARTUUID=$(blkid -s PARTUUID -o value /dev/${PARTITIONS[2]})
-echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$PARTUUID zswap.enabled=0 rw rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
+
+if [ $DEVICE == "vm" ]; then
+	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$PARTUUID zswap.enabled=0 rw rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
+else
+	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$PARTUUID zswap.enabled=0 rw rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
+fi
+
+# USERS
+
+echo "Create root password"
+$CHROOT passwd
+
+read -p "Create user account? (Y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^(""|[yY])$ ]]; then
+	read -p "Username: " USERNAME
+	$CHROOT useradd -m "$USERNAME"
+	$CHROOT usermod -aG wheel "$USERNAME"
+	$CHROOT passwd "$USERNAME"
+	$CHROOT pacman -S --noconfirm sudo
+	mkdir -p /mnt/etc/sudoers.d
+	echo "%wheel ALL=(ALL) ALL" > /mnt/etc/sudoers.d/99_wheel
+fi
+
+
