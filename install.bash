@@ -82,6 +82,9 @@ do
 	UPSET=true
 done
 
+# MIRRORS
+reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
 #
 
 echo
@@ -89,6 +92,8 @@ echo "Disk to partition: /dev/$DISK"
 echo "Device type: $DEVICE"
 echo "Is everything correct?"
 echo "Username: $USERNAME"
+echo "Mirrors:"
+cat /etc/pacman.d/mirrorlist
 echo
 
 read -p "Continue installation? (y/N) " -n 1 -r
@@ -147,6 +152,13 @@ CHROOT="arch-chroot /mnt"
 
 if [ $DEVICE == "vm" ]; then
 	$CHROOT systemctl enable vboxservice
+fi
+
+# TRIM (SSD)
+DISCARD=$(lsblk -d $DISK --discard -lno DISC-MAX)
+if ! [ $DISCARD == "0B" ]; then
+        $CHROOT systemctl enable fstrim.timer
+        echo "Enabled trim timer"
 fi
 
 # NETWORK
