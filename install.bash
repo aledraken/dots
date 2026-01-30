@@ -162,7 +162,7 @@ case $DEVICE in
 esac
 
 $CHROOT systemctl enable systemd-resolved
-$CHROOT ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 DNS="9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net 2620:fe::fe#dns.quad9.net 2620:fe::9#dns.quad9.net"
 sed -i "/#DNS=/c\DNS=$DNS" /mnt/etc/systemd/resolved.conf
 
