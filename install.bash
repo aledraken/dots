@@ -154,13 +154,6 @@ if [ $DEVICE == "vm" ]; then
 	$CHROOT systemctl enable vboxservice
 fi
 
-# TRIM (SSD)
-DISCARD=$(lsblk -d $DISK --discard -lno DISC-MAX)
-if ! [ $DISCARD == "0B" ]; then
-        $CHROOT systemctl enable fstrim.timer
-        echo "Enabled trim timer"
-fi
-
 # NETWORK
 case $DEVICE in
 	"laptop")
