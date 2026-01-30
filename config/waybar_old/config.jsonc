@@ -1,0 +1,88 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top", // Waybar at top layer
+  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "height": 18,
+  "spacing": 0,
+  "margin": 0,
+  "fixed-center": true,
+  "modules-left": [
+    "niri/workspaces"
+  ],
+  "modules-center": [
+    "niri/window"
+  ],
+  "modules-right": [
+    "tray",
+    "network",
+    "bluetooth",
+    "keyboard-state",
+    "niri/language",
+    "idle_inhibitor",
+    "wireplumber",
+    "battery",
+    "clock"
+  ],
+
+
+
+
+
+
+
+//
+// RIGHT
+//
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%)",
+    "min-length": 5,
+    "max-length": 5
+  },
+
+  "bluetooth": {
+    "format": "{status}"
+  },
+
+  "keyboard-state": {
+    "capslock": true,
+    "numlock": true,
+    "format": {
+        "capslock": "A {icon}",
+        "numlock": "N {icon}"
+    },
+    "format-icons": {
+      "locked": "󰌾",
+      "unlocked": "󰍀"
+    }
+  },
+
+  "niri/language": {
+    "format-en": "US",
+    "format-it": "IT"
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰈈",
+      "deactivated": "󰈉"
+    }
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "{capacity}% 󰂄",
+    "min-length": 10,
+    "max-length": 10
+  },
+
+  "clock": {
+    "margin-right": 100,
+    "on-click": "foot"
+  }
+
+
+}

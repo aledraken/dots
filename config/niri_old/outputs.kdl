@@ -1,0 +1,7 @@
+// Find outputs with `niri msg outputs` while inside a niri instance.
+
+// VirtualBox output
+output "Virtual-1" {
+    mode "1280x800@60.000"
+    scale 1
+}

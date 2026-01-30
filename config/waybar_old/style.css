@@ -1,0 +1,50 @@
+* {
+  font-family: 'MonaspiceNeNerdFont';
+  /* font-weight: bold; */
+  font-size: 10px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: shade(alpha(#000000, 1.0), 1.0);
+  color: #ffffff;
+}
+
+#workspaces {
+}
+
+#workspaces button {
+  border-left: 1px solid #ffffff;
+}
+
+#workspaces button:first-child {
+  border-left: 0;
+}
+
+
+/*
+RIGHT
+*/
+
+#network, #bluetooth, #keyboard-state, #language, #idle_inhibitor, #wireplumber {
+  border-right: 1px solid #ffffff;
+  padding: 0 3px;
+}
+
+#keyboard-state label:first-child{
+  margin-right: 3px
+}
+
+#idle_inhibitor {
+  margin-left: 3px;
+  padding-left: 0px;
+  padding-right: 6px;
+}
+
+#clock {
+  padding: 0 3px;
+}
