@@ -1,0 +1,24 @@
+include "inputs.kdl"
+include "outputs.kdl"
+include "layout.kdl"
+include "window-rules.kdl"
+include "binds.kdl"
+
+// Disable whole node by adding /- e.g. /-input
+
+hotkey-overlay {
+    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
+    // skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}

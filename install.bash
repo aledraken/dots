@@ -159,7 +159,7 @@ case $DEVICE in
 	"laptop")
 		$CHROOT systemctl enable iwd
 		mkdir -p /mnt/etc/iwd
-		echo -e "[General]\nEnableNetworkConnfiguration=true\n[Network]\nEnableIPv6=false\nNameResolvingService=systemd" > /mnt/etc/iwd/main.conf
+		echo -e "[General]\nEnableNetworkConnfiguration=true" > /mnt/etc/iwd/main.conf
 		;;
 	*)
 		$CHROOT systemctl enable systemd-networkd
