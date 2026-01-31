@@ -152,6 +152,8 @@ CHROOT="arch-chroot /mnt"
 
 if [ $DEVICE == "vm" ]; then
 	$CHROOT systemctl enable vboxservice
+else
+	$CHROOT systemctl enable fstrim.timer
 fi
 
 # NETWORK
@@ -177,6 +179,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # TIME & ZONE
 $CHROOT ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 $CHROOT hwclock --systohc
+$CHROOT systemctl enable systemd-timesyncd
 
 # LOCALES
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
