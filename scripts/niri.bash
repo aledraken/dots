@@ -34,11 +34,11 @@ WantedBy=graphical-session.target" > /tmp/cliphist.service
 $SUDO cp /tmp/cliphist.service /usr/lib/systemd/user/
 
 # TERMINAL
-PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij"
+PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git"
 
 # LAPTOP PACKAGES
 if [ $DEVICE == "laptop" ]; then
-	PACKAGES="$PACKAGES brightnessctl impala"
+	PACKAGES="$PACKAGES brightnessctl impala thermald auto-cpufreq"
 fi
 
 # SECURITY
