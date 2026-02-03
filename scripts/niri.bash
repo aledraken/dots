@@ -34,7 +34,7 @@ WantedBy=graphical-session.target" > /tmp/cliphist.service
 $SUDO cp /tmp/cliphist.service /usr/lib/systemd/user/
 
 # TERMINAL
-PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git"
+PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git syncthing"
 
 # LAPTOP PACKAGES
 if [ $DEVICE == "laptop" ]; then
