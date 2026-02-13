@@ -114,7 +114,7 @@ echo "KEYMAP=us" > /mnt/etc/vconsole.conf
 
 # PACKAGES
 
-PACKAGES="base linux sudo"
+PACKAGES="base linux sudo zram-generator"
 
 case $DEVICE in
 	"vm")
@@ -129,10 +129,17 @@ case $DEVICE in
 esac
 
 pacstrap -K /mnt $PACKAGES
+echo "[zram0]" > /etc/systemd/zram-generator.conf
+echo -e "vm.swappiness = 180
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
+vm.page-cluster = 0" > /etc/sysctl.d/99-vm-zram-parameters.conf
 
 # CHROOT
 
 CHROOT="arch-chroot /mnt"
+
+$CHROOT systemctl enable systemd-zram-setup@zram0
 
 # VM
 
