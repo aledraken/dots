@@ -7,6 +7,8 @@ if mountpoint -q /mnt; then
 	umount -R /mnt
 fi
 
+echo "Device type: $DEVICE"
+
 # Disk Selection
 
 DISKSEL=false
@@ -79,19 +81,6 @@ do
 	UPSET=true
 done
 
-# MIRRORS
-reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
-
-#
-
-echo
-echo "Disk to partition: /dev/$DISK"
-echo "Device type: $DEVICE"
-echo "Is everything correct?"
-echo "Username: $USERNAME"
-echo "Mirrors:"
-cat /etc/pacman.d/mirrorlist
-echo
 
 read -p "Continue installation? (y/N) " -n 1 -r
 echo
@@ -102,6 +91,9 @@ fi
 
 
 # INSTALLATION
+
+# MIRRORS
+reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # PARTITIONING
 sgdisk --zap-all $DISK
@@ -193,9 +185,16 @@ echo -e "default @saved\ntimeout 3\nconsole-mode max" > /mnt/boot/loader/loader.
 PARTUUID=$(blkid -s PARTUUID -o value /dev/${PARTITIONS[2]})
 
 if [ $DEVICE == "vm" ]; then
-	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$PARTUUID zswap.enabled=0 rw rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
+	echo -e "title Arch Linux
+	linux /vmlinuz-linux
+	initrd /initramfs-linux.img
+	options root=PARTUUID=$PARTUUID rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
 else
-	echo -e "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$PARTUUID zswap.enabled=0 rw rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
+	echo -e "title Arch Linux
+	linux /vmlinuz-linux
+	initrd /intel-ucode.img
+	initrd /initramfs-linux.img
+	options root=PARTUUID=$PARTUUID rootfstype=ext4" > /mnt/boot/loader/entries/arch.conf
 fi
 
 # USERS
