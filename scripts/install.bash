@@ -4,10 +4,7 @@
 DEVICE=$(hostnamectl chassis)
 
 if mountpoint -q /mnt; then
-	echo "/mnt already mounted"
-	echo "Trying to unmount /mnt"
 	umount -R /mnt
-	exit
 fi
 
 # Disk Selection
