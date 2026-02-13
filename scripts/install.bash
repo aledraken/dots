@@ -104,12 +104,9 @@ fi
 # INSTALLATION
 
 # PARTITIONING
-wipefs -a /dev/$DISK
-PARTED="parted /dev/$DISK -s -f -a optimal --"
-$PARTED mklabel gpt
-$PARTED mkpart ESP fat32 0% 1G
-$PARTED set 1 esp on
-$PARTED mkpart root ext4 1G 100%
+sgdisk --zap-all $DISK
+sgdisk -n 1:0:+1G -t 1:ef00 $DISK
+sgdisk -n 2:0:0 -t 2:8300  $DISK
 
 DISKPARTITIONS=$(lsblk -lno NAME /dev/$DISK)
 mapfile PARTITIONS < <(echo "$DISKPARTITIONS")
