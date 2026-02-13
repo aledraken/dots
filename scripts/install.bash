@@ -129,11 +129,11 @@ case $DEVICE in
 esac
 
 pacstrap -K /mnt $PACKAGES
-echo "[zram0]" > /etc/systemd/zram-generator.conf
+echo "[zram0]" > /mnt/etc/systemd/zram-generator.conf
 echo -e "vm.swappiness = 180
 vm.watermark_boost_factor = 0
 vm.watermark_scale_factor = 125
-vm.page-cluster = 0" > /etc/sysctl.d/99-vm-zram-parameters.conf
+vm.page-cluster = 0" > /mnt/etc/sysctl.d/99-vm-zram-parameters.conf
 
 # CHROOT
 
