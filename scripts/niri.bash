@@ -15,7 +15,8 @@ SERVICES=""
 USER_SERVICES=""
 
 # DESKTOP ENVIRONMENT
-PACKAGES="$PACKAGES uwsm xdg-desktop-portal-gtk niri foot fuzzel waybar dunst libnotify cliphist"
+PACKAGES="$PACKAGES uwsm ly xdg-desktop-portal-gtk niri foot fuzzel waybar dunst libnotify cliphist"
+SERVICES="$SERVICES ly@tty2"
 USER_SERVICES="$USER_SERVICES waybar foot-server cliphist"
 echo -e "[Unit]
 Description=Clipboard history "manager" for Wayland
@@ -39,6 +40,7 @@ PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cl
 # LAPTOP PACKAGES
 if [ $DEVICE == "laptop" ]; then
 	PACKAGES="$PACKAGES brightnessctl impala thermald auto-cpufreq"
+	SERVICES="$SERVICES auto-cpufreq"
 fi
 
 # SECURITY
