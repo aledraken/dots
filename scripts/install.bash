@@ -107,7 +107,7 @@ fi
 # INSTALLATION
 
 # PARTITIONING
-
+wipefs -a /dev/$DISK
 PARTED="parted /dev/$DISK -s -f -a optimal --"
 $PARTED mklabel gpt
 $PARTED mkpart ESP fat32 0% 1G
