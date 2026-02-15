@@ -8,16 +8,16 @@ fi
 DEVICE=$(hostnamectl chassis)
 SUDO="sudo"
 PMI="$SUDO pacman -S --needed --noconfirm"
-EUS="$SUDO systemctl --machine=$USER@.host --user enable"
+EUS="$SUDO systemctl --machine=$USER@.host --user enable --now"
 ES="$SUDO systemctl enable --now"
 PACKAGES=""
 SERVICES=""
 USER_SERVICES=""
 
 # DESKTOP ENVIRONMENT
-PACKAGES="$PACKAGES uwsm ly xdg-desktop-portal-gtk niri foot fuzzel waybar dunst libnotify cliphist"
+PACKAGES="$PACKAGES uwsm ly xdg-desktop-portal-gtk hyprpolkitagent niri fuzzel waybar dunst libnotify cliphist thunar gvfs"
 SERVICES="$SERVICES ly@tty2"
-USER_SERVICES="$USER_SERVICES waybar foot-server cliphist"
+USER_SERVICES="$USER_SERVICES hyprpolkitagent waybar cliphist"
 echo -e "[Unit]
 Description=Clipboard history "manager" for Wayland
 Documentation=https://github.com/sentriz/cliphist
@@ -34,28 +34,6 @@ Restart=on-failure
 WantedBy=graphical-session.target" > /tmp/cliphist.service
 $SUDO cp /tmp/cliphist.service /usr/lib/systemd/user/
 
-# TERMINAL
-PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git syncthing lazygit"
-
-# LAPTOP PACKAGES
-if [ $DEVICE == "laptop" ]; then
-	PACKAGES="$PACKAGES brightnessctl impala thermald auto-cpufreq"
-	SERVICES="$SERVICES auto-cpufreq"
-fi
-
-# SECURITY
-PACKAGES="$PACKAGES ufw"
-SERVICES="$SERVICES ufw"
-
-# BLUETOOTH
-if ! [ $DEVICE == "vm" ]; then
-  echo "Not in a vm #TODO bluetooth"
-fi
-
-# AUDIO
-PACKAGES="$PACKAGES wireplumber"
-USER_SERVICES="$USER_SERVICES pipewire"
-
 # THEMING
 PACKAGES="$PACKAGES otf-monaspace-nerd"
 
@@ -64,10 +42,6 @@ $SUDO systemctl daemon-reload
 $PMI $PACKAGES
 $ES $SERVICES
 $EUS $USER_SERVICES
-
-# UFW
-$SUDO ufw enable
-$SUDO ufw logging off
 
 # WAYLAND SESSION
 echo -e "[Desktop Entry]
