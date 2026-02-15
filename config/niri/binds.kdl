@@ -16,6 +16,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn-sh "uwsm-app -- footclient"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "uwsm-app -- fuzzel"; }
+    Mod+M hotkey-overlay-title="Yazi" { spawn-sh "uwsm-app -- footclient yazi"; }
+    Mod+Shift+M hotkey-overlay-title="Thunar" { spawn-sh "uwsm-app -- thunar"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     
     Super+Shift+C hotkey-overlay-title="Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
