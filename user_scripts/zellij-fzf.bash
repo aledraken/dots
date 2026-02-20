@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-
 session=$(zellij ls -sn | fzf)
-zellij attach $session
+
+if [ "$session" == "" ]; then
+  exit
+fi
+
+footclient zellij attach $session & disown

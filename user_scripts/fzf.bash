@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-
-fzf --walker-root ~/Scripts
+SCRIPT=$(fzf --walker-root ~/Scripts)
+echo $SCRIPT
