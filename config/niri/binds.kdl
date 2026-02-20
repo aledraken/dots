@@ -22,6 +22,7 @@ binds {
     
     Super+Shift+C hotkey-overlay-title="Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
     Super+Ctrl+C hotkey-overlay-title="Clear clipboard" { spawn-sh "cliphist wipe && dunstify Cleared clipboard -t 1000"; }
+    
     Mod+Ctrl+Delete hotkey-overlay-title="Open a Terminal" { spawn-sh "uuctl fuzzel --dmenu --config ~/.config/fuzzel/uuctl.ini"; }
     Mod+Shift+Delete hotkey-overlay-title="Open Top" { spawn-sh "uwsm-app -- footclient htop"; }
 
