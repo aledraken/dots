@@ -36,6 +36,24 @@ USER_SERVICES=""
 PACKAGES="$PACKAGES brightnessctl thermald auto-cpufreq"
 SERVICES="$SERVICES auto-cpufreq thermald"
 
+# DRIVERS
+PACKAGES="$PACKAGES vulkan-intel intel-media-driver vpl-gpu-rt"
+
+# ENV VARS
+VAAPI=$(cat /etc/environment | grep LIBVA_DRIVER_NAME)
+if [ "$VAAPI" == "" ]; then
+  cp /etc/environment /tmp/environment
+  echo "export LIBVA_DRIVER_NAME=iHD" >> /tmp/environment
+  sudo cp /tmp/environment /etc/environment
+fi
+
+ANVDEBUG=$(cat /etc/environment | grep ANV_DEBUG)
+if [ "$ANVDEBUG" == "" ]; then
+  cp /etc/environment /tmp/environment
+  echo "export ANV_DEBUG=video-decode,video-encode" >> /tmp/environment
+  sudo cp /tmp/environment /etc/environment
+fi
+
 # DO THE STUFF
 $SUDO systemctl daemon-reload
 $PMI $PACKAGES

@@ -19,7 +19,7 @@ PACKAGES="$PACKAGES foot"
 USER_SERVICES="$USER_SERVICES foot-server"
 
 # TUI / CLI
-PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git syncthing lazygit wl-clipboard wiremix"
+PACKAGES="$PACKAGES bat fish starship neovim yazi 7zip htop tldr man-db trash-cli eza zellij git syncthing lazygit wl-clipboard wiremix fzf"
 
 # SECURITY
 PACKAGES="$PACKAGES ufw"
