@@ -8,7 +8,7 @@ pac="$pac qtile xorg-xwayland python-pyxdg python-dbus-fast dunst xdg-utils xdg-
 
 pac="$pac fish starship foot otf-monaspace-nerd noto-fonts ly wl-clipboard"
 
-pac="$pac bat eza git lazygit htop tldr man-db trash-cli yazi"
+pac="$pac bat eza git lazygit htop tldr man-db trash-cli yazi stow"
 
 pac="$pac fwupd udisks2 thermald brightnessctl ufw"
 
