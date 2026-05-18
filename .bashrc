@@ -1,1 +1,1 @@
-home/.bashrc
+dotfiles/.bashrc
