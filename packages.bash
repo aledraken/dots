@@ -4,7 +4,7 @@ set -e
 
 pac=""
 
-pac="$pac qtile xorg-xwayland python-pyxdg python-dbus-fast dunst xdg-utils xdg-desktop-portal-gtk polkit-gnome"
+pac="$pac qtile xorg-xwayland python-pyxdg python-dbus-fast swaync xdg-utils xdg-desktop-portal-gtk polkit-gnome"
 
 pac="$pac fish starship foot otf-monaspace-nerd noto-fonts ly wl-clipboard"
 
