@@ -74,6 +74,7 @@ keys = [
     Key([], "XF86AudioMute", lazy.widget["volume"].mute(), desc="Toggle mute"),
 
     Key([mod], "b", lazy.hide_show_bar(position="all"), desc="Toggle bar"),
+    Key([mod], "p", lazy.spawn("swaync-client -t"), desc="Toggle notification center"),
     
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -160,6 +161,7 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.CheckUpdates(),
                 widget.KeyboardLayout(configured_keyboards=['us', 'it']),
+                widget.SwayNC(),
                 widget.StatusNotifier(),
                 widget.Clock(),
                 widget.Volume(
@@ -177,7 +179,7 @@ screens = [
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        background="#282828",
+        background="#000000",
         #wallpaper=logo,
         wallpaper_mode="center",
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
