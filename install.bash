@@ -108,6 +108,7 @@ Either set a disk or the 2 partitions
 			;;
 		-bp|--bootpart)
 			boot_partition="$2"
+			efi_partition="$2"
 			shift
 			;;
 		-rp|--rootpart)
