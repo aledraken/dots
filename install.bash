@@ -649,7 +649,7 @@ users_setup() {
 
 # DISK & PARTITIONS
 echo -e "${YELLOW}FORMATTING DISK$NC"
-if [[ -n "$disk" && -z "$root_partition"]]; then
+if [[ -n "$disk" && -z "$root_partition" ]]; then
 	format_disk
 fi
 
