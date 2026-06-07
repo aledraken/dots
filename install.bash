@@ -346,6 +346,9 @@ if ! boot_check; then
 fi
 
 if ! part_check && ! disk_check; then
+	root_partition=""
+	efi_partition=""
+	boot_partition=""
 	select_disk
 	echo -e "${GREEN}Disk selected: $disk$NC"
 fi
@@ -646,7 +649,7 @@ users_setup() {
 
 # DISK & PARTITIONS
 echo -e "${YELLOW}FORMATTING DISK$NC"
-if [[ -n "$disk" ]]; then
+if [[ -n "$disk" && -z "$root_partition"]]; then
 	format_disk
 fi
 
