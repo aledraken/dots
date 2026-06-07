@@ -2,7 +2,7 @@
 
 # https://github.com/aledraken/dots
 # Install script version:
-# 0.1
+# 0.12
 
 set -e
 
