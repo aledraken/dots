@@ -401,9 +401,8 @@ Username: $username | Password: $user_password"
 
 echo "Boot: $boot"
 
-if [ -n "$disk" ]; then
-	echo "Disk: /dev/$disk"
-else
+echo "Disk: /dev/$disk"
+if [ -n "$root_partition" ]; then
 	echo -e "Partitions:
 	BOOT: /dev/$boot_partition
 	ROOT: /dev/$root_partition"
