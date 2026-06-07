@@ -345,7 +345,7 @@ if ! boot_check; then
 	echo -e "${GREEN}Boot selected: $boot$NC\n"
 fi
 
-if ! part_check && ! disk_check; then
+if ! part_check || ! disk_check; then
 	root_partition=""
 	efi_partition=""
 	boot_partition=""
